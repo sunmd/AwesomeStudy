@@ -303,6 +303,14 @@ git config --global i18n.logoutputencoding utf-8
 
 export LESSCHARSET=utf-8
 
+### zsh git status中文文件显示乱码
+
+原因是core.quotepath没有设置好
+
+``` git
+git config --global core.quotepath false
+```
+
 
 
 ## 新建一个远程分支进行测试
@@ -315,6 +323,23 @@ git checkout -b <名字> <远程分支>
 
 1. 不用 git push -f
 2. 不要rebase 公共分支
+
+## 查看远程库更新的简单流程
+
+1. 可以通过命令 git remote show [remote-name] 查看某个远程仓库的详细信息，比如要看所克隆的 origin 仓库，可以运行：
+
+```git
+git remote show origin
+```
+
+2. git fetch：相当于是从远程获取最新版本到本地，不会自动merge
+
+```git
+Git fetch origin master
+git log --all --graph master origin/master
+git log -p master origin/master
+git merge origin/master
+```
 
 ## 规范建设
 
