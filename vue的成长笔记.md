@@ -28,3 +28,8 @@ router.beforeEach((to, from, next) => {
 // 必须填写三个参数,不是可以进行提取,也学可以用对象来提取,后面进行测试一下
 ```
 
+### Error: ENOSPC: System limit for number of file watchers reached, watch
+
+　当前问题主要是因为gulp的watch需要监听很多文件的改动，但是fedora、ubuntu系统的文件句柄其实是有限制的，因此可以使用以下命令： 
+ 　　echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p 
+ 　　对于以上Linux下gulp报错Error：watch ENOSPC的解决方法就介绍完了，如果用户也出现以上同样问题，那么可以按照操作方法赶紧试试解决吧！
