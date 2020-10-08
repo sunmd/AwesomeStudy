@@ -311,13 +311,21 @@ export LESSCHARSET=utf-8
 git config --global core.quotepath false
 ```
 
-
-
 ## 新建一个远程分支进行测试
 
 ```git
 git checkout -b <名字> <远程分支>
 ```
+
+### 将本地分支推送到远端
+
+```git
+$ git push origin test:master         // 提交本地test分支作为远程的master分支 //好像只写这一句，远程的github就会自动创建一个test分支
+$ git push origin test:test              // 提交本地test分支作为远程的test分支
+查看远程分支：$ git branch -r
+```
+
+
 
 ## 注意事项
 
