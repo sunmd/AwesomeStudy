@@ -87,3 +87,14 @@ runtimeCompiler: true
 ```
 
 https://cli.vuejs.org/config/#runtimecompiler
+
+### Object(…) is not a function报错解决(lodash/findLast)
+
+```javascript
+// 由于结构的方式出现了问题.不需要用{}来解析直接可以用
+import { findLast } from "lodash/findLast";
+// 改成这个
+import findLast from "lodash/findLast";
+
+```
+

@@ -124,6 +124,14 @@ find .git/objects -type -f
 
 git branch -d branch_name:使用-d 在删除前Git会判断在该分支上开发的功能是否被merge的其它分支。如果没有，不能删除。如果merge到其它分支，但之后又在其上做了开发，使用-d还是不能删除。
 
+### git 删除远程分支
+
+```git
+git push origin --delete code04
+```
+
+
+
 ### git 修改最近一次提交
 
 git commit --amend 命令应该是代替（或这说修改）上一次提交，不只是修改message。
