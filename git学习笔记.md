@@ -286,6 +286,19 @@ git remote show origin ## 查看本地分支和追踪情况
 git remote prune origin ## 同步删除这些分支
 ```
 
+### git本地的分支和服务器的分支不一样时候
+
+```git
+# 记Git报错-refusing to merge unrelated histories
+git pull origin master --allow-unrelated-histories
+# fatal: The current branch master has no upstream branch.
+# To push the current branch and set the remote as upstream, use
+git push --set-upstream origin master
+git push origin master:win
+# 左边是本地,右边是远程端
+
+```
+
 
 
 ## git fetch
