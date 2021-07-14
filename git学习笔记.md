@@ -491,3 +491,21 @@ IDEA中使用Terminal连接git bash输入命令，在git log 时日志信息出�
 in:readme
 
 stars:>3000
+
+
+
+## 解决git status不能显示中文
+
+- 原因
+  在默认设置下，中文文件名在工作区状态输出，中文名不能正确显示，而是显示为八进制的字符编码。
+- 解决办法
+  将git 配置文件 `core.quotepath`项设置为false。
+  quotepath表示引用路径
+  加上`--global`表示全局配置
+
+git bash 终端输入命令：
+
+```git
+git config --global core.quotepath false
+```
+
