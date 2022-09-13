@@ -46,8 +46,6 @@ git init ypur_project #会在当前路径下创建和项目名称同名的文件
 cd your_project
 ```
 
-
-
 ## 给文件重命名的方法
 
 ```git
@@ -95,8 +93,6 @@ refs/tags:存放tag，又叫里程牌 （当这次commit是具有里程碑意义
 objects：存放对象 .git/objects/ 文件夹中的子文件夹都是以哈希值的前两位字符命名 每个object由40位字符组成，前两位字符用来当文件夹，后38位做文件。
 ```
 
-
-
 ## commit、tree和blob三个对象之间的关系
 
 - 一个commit对应一个树(文件一个快照)
@@ -115,10 +111,10 @@ find .git/objects -type -f
 
 ### git checkout head 的^和~
 
-1.  一个节点，可以包含多个子节点（checkout 出多个分支）
-2.  一个节点可以有多个父节点（多个分支合并）
-3.  ^是~都是父节点，区别是跟随数字时候，^2 是第二个父节点，而~2是父节点的父节点
-4.  ^和~可以组合使用,例如 HEAD~2^2
+1. 一个节点，可以包含多个子节点（checkout 出多个分支）
+2. 一个节点可以有多个父节点（多个分支合并）
+3. ^是~都是父节点，区别是跟随数字时候，^2 是第二个父节点，而~2是父节点的父节点
+4. ^和~可以组合使用,例如 HEAD~2^2
 
 ### git 删除分支
 
@@ -129,8 +125,6 @@ git branch -d branch_name:使用-d 在删除前Git会判断在该分支上开发
 ```git
 git push origin --delete code04
 ```
-
-
 
 ### git 修改最近一次提交
 
@@ -179,7 +173,7 @@ Author: Scott Chacon <schacon@gee-mail.com>
 Date:   Mon Mar 17 21:52:11 2008 -0700
 
     changed the version number
-    
+
 $ git tag -a v1.2 9fceb02 #给以前的commit打标签
 # 默认情况下，git push 命令并不会传送标签到远程仓库服务器上。 在创建完标签后你必须显式地推送标签到共享服务器上。 这个过程就像共享远程分支一样——你可以运行 git push origin <tagname>。
 
@@ -191,7 +185,7 @@ Writing objects: 100% (14/14), 2.05 KiB | 0 bytes/s, done.
 Total 14 (delta 3), reused 0 (delta 0)
 To git@github.com:schacon/simplegit.git
  * [new tag]         v1.5 -> v1.5
- 
+
 $ git push origin --tags
 Counting objects: 1, done.
 Writing objects: 100% (1/1), 160 bytes | 0 bytes/s, done.
@@ -199,7 +193,7 @@ Total 1 (delta 0), reused 0 (delta 0)
 To git@github.com:schacon/simplegit.git
  * [new tag]         v1.4 -> v1.4
  * [new tag]         v1.4-lw -> v1.4-lw
- 
+
 $ git tag -d v1.4-lw
 Deleted tag 'v1.4-lw' (was e7d5add)
 
@@ -217,8 +211,6 @@ git diff [<options>] <blob> <blob>
 git diff [<options>] --no-index [--] <path> <path>
 ```
 
-
-
 git diff --cached: 暂存区和head之间差异 -号是head +号暂存区
 
 git diff: 暂存区和工作区之间差异 -号是暂存区,+号是工作区
@@ -232,8 +224,6 @@ git diff HEAD -- readme.md     # 工作区 <===> HEAD
 暂存区恢复成HEAD : git reset HEAD
 
 暂存区覆盖工作区修改：git checkout 
-
-
 
 ## git暂存区恢复成HEAD
 
@@ -272,6 +262,7 @@ git stash pop   # 之前存放的内容拿出来,并且删除堆栈数据
 ### git仓库配分到本地文件
 
 ```git
+git init --bare
 git clone --bare /user/local/wer/.git  ya.git
 git clone --bare file:///user/local/wer/.git  zhineng.git
 git remote -av
@@ -296,10 +287,7 @@ git pull origin master --allow-unrelated-histories
 git push --set-upstream origin master
 git push origin master:win
 # 左边是本地,右边是远程端
-
 ```
-
-
 
 ## git fetch
 
@@ -328,7 +316,7 @@ export LESSCHARSET=utf-8
 
 原因是core.quotepath没有设置好
 
-``` git
+```git
 git config --global core.quotepath false
 ```
 
@@ -345,8 +333,6 @@ $ git push origin test:master         // 提交本地test分支作为远程的ma
 $ git push origin test:test              // 提交本地test分支作为远程的test分支
 查看远程分支：$ git branch -r
 ```
-
-
 
 ## 注意事项
 
@@ -378,17 +364,11 @@ git merge origin/master
 
 **commit message格式**
 
-- 
-
-```
-<type>(<scope>): <subject>
-```
-
-
+- ```
+  <type>(<scope>): <subject>
+  ```
 
 **type(必须)**
-
-
 
 用于说明git commit的类别，只允许使用下面的标识。
 
@@ -418,15 +398,11 @@ merge：代码合并。
 
 sync：同步主线或分支的Bug。
 
-
-
 **scope(可选)**
 
 scope用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。
 
 例如在Angular，可以是location，browser，compile，compile，rootScope， ngHref，ngClick，ngView等。如果你的修改影响了不止一个scope，你可以使用*代替。
-
-
 
 **subject(必须)**
 
@@ -450,15 +426,11 @@ fix(DAO):用户查询缺少username属性 feat(Controller):用户查询接口开
 
 - 格式化的commit message才可以用于自动化输出Change log。
 
-
-
 监控服务
 
 通常提出一个规范之后，为了大家更好的执行规范，就需要进行一系列的拉通，比如分享给大家这种规范的优点、能带来什么收益等，在大家都认同的情况下最好有一些强制性的措施。当然git commit规范也一样，前期我们分享完规范之后考虑从源头进行强制拦截，只要大家提交代码的commit message不符合规范，直接不能提交。但由于代码仓库操作权限的问题，我们最终选择了使用webhook通过发送警告的形式进行监控，督促大家按照规范执行代码提交。除了监控git commit message的规范外，我们还加入了大代码量提交监控和删除文件监控，减少研发的代码误操作。
 
 **整体流程**
-
-
 
 ![img](https://mmbiz.qpic.cn/mmbiz_png/Z6bicxIx5naLUCVicia5R1fhl9ukZ68TRoAdDyaRbvqFebeMI8WT0RBTsp4SfTOO8DcSAYlh76r7woibKDZJ8tMDibA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
@@ -470,8 +442,6 @@ fix(DAO):用户查询缺少username属性 feat(Controller):用户查询接口开
 
 - DB：存项目信息和git commit信息便于后续统计commit message规范率。
 
-
-
 webhook是作用于代码库上的，用户提交git commit，push到仓库的时候就会触发webhook，webhook从用户的commit信息里面获取到commit message，校验其是否满足git commit规范，如果不满足就发送告警消息；如果满足规范，调用gitlab API获取提交的diff信息，验证提交代码量，验证是否有重命名文件和删除文件操作，如果存在以上操作还会发送告警消息，最后把所有记录都入库保存。
 
 IDEA中使用Terminal连接git bash输入命令，在git log 时日志信息出现中文乱码，，，，
@@ -479,8 +449,6 @@ IDEA中使用Terminal连接git bash输入命令，在git log 时日志信息出�
 尝试过很多方法都失败，最终找到这个方法：
 
 在Terminal窗口运行以下三个命令后问题得到解决。
-
-
 
 ## github
 
@@ -491,8 +459,6 @@ IDEA中使用Terminal连接git bash输入命令，在git log 时日志信息出�
 in:readme
 
 stars:>3000
-
-
 
 ## 解决git status不能显示中文
 
@@ -509,3 +475,15 @@ git bash 终端输入命令：
 git config --global core.quotepath false
 ```
 
+原因
+
+LF和CRLF其实都是换行符，但是不同的是，LF是linux和Unix系统的换行符，CRLF是window 系统的换行符。这就给跨平台的协作的项目带来了问题，保存文件到底是使用哪个标准呢？ git为了解决这个问题，提供了一个”换行符自动转换“的功能，并且这个功能是默认处于”自动模式“即开启状态的。
+这个换行符自动转换会把自动把你代码里 与你当前操作系统不相同的换行的方式 转换成当前系统的换行方式（即LF和CRLF 之间的转换），这样一来，当你提交代码的时候，即使你没有修改过某个文件，也被git认为你修改过了，从而提示"LF will be replaced by CRLF in *****"
+解决
+
+最简单的一种办法就是把自动转换功能关掉即可。
+输入命令 ：git config core.autocrlf false (仅对当前git仓库有效）
+git config --global core.autocrlf false (全局有效，不设置推荐全局）
+————————————————
+版权声明：本文为CSDN博主「man_zuo」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/man_zuo/article/details/88651416

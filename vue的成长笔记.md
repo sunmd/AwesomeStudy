@@ -98,3 +98,27 @@ import findLast from "lodash/findLast";
 
 ```
 
+
+
+
+
+用法 
+在vue-cli3的根目录中找到vue.confg.js，添加如下代码 
+const path = require('path');
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+module.exports = {
+    chainWebpack: (config)=>{
+        config.resolve.alias
+            .set('@$', resolve('src'))
+            .set('assets',resolve('src/assets'))
+            .set('components',resolve('src/components'))
+            .set('layout',resolve('src/layout'))
+            .set('base',resolve('src/base'))
+            .set('static',resolve('src/static'))
+    }
+}
+————————————————
+版权声明：本文为CSDN博主「Gabriel_wei」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/Gabriel_wei/article/details/90210514
